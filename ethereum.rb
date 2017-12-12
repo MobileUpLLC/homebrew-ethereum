@@ -16,6 +16,8 @@ class Ethereum < Formula
     system "make", "all"
     bin.install 'build/bin/evm'
     bin.install 'build/bin/geth'
+    bin.install 'build/bin/swarm'
+    bin.install 'build/bin/wnode'
     bin.install 'build/bin/rlpdump'
     bin.install 'build/bin/puppeth'
   end
