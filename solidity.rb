@@ -13,23 +13,21 @@
 # (c) 2014-2017 solidity contributors.
 #------------------------------------------------------------------------------
 
-require 'formula'
-
 class Solidity < Formula
-
   desc "The Solidity Contract-Oriented Programming Language"
   homepage "http://solidity.readthedocs.org"
-  url "https://github.com/ethereum/solidity/releases/download/v0.4.19/solidity_0.4.19.tar.gz"
-  version "0.4.18"
-  sha256 "6525f2cfe498785b3d752b616cb9b5e81222654ec594a27708f45e688bfa56e9"
+  url "https://github.com/ethereum/solidity/releases/download/v0.4.24/solidity_0.4.24.tar.gz"
+  version "0.4.24"
+  sha256 "b6828266d9b108a035f44127a6107c9fbc516018b0fcf5de370196306cddb2a8"
 
   depends_on "cmake" => :build
   depends_on "boost" => "c++11"
-  depends_on "cryptopp"
-  depends_on "gmp"
+  # Note: due to a homebrew limitation, ccache will always be detected and cannot be turned off.
+  depends_on "ccache" => :build
+  depends_on "z3"
 
   def install
-    system "cmake", ".", *std_cmake_args
+    system "cmake", ".", *std_cmake_args, "-DTESTS=OFF"
     system "make", "install"
   end
 

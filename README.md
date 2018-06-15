@@ -3,6 +3,8 @@ homebrew-ethereum
 
 Homebrew Tap for Ethereum
 
+**Important note: reporting issues with any of these brews should be done at their respective repositories ([Go client](https://github.com/ethereum/go-ethereum), [C++ client](https://github.com/ethereum/cpp-ethereum) and [Solidity](https://github.com/ethereum/solidity)).**
+
 ## Installation
 
 ```
@@ -17,7 +19,11 @@ brew install ethereum
 ### C++ client
 ```
 brew install cpp-ethereum
-brew linkapps cpp-ethereum
+```
+
+### Solidity
+```
+brew install solidity
 ```
 
 ## Running
@@ -28,6 +34,8 @@ brew linkapps cpp-ethereum
 ### C++ client
 `eth`
 
+### Solidity
+`solc`
 
 ## Development
 Get the latest development version with the `--devel` flag. Use `--build-from-source` if you don't want a pre-built bottle. Alternatively you can use the `--successful` flag (cpp-ethereum only, see [important note below](#important-note-when-using---successful)) or any other [available options](#options).
@@ -111,22 +119,7 @@ bottles directly with `brew install <bottle_url>`, see [cpt-obvious](https://bui
 for previous builds.
 
 
-##Options
-
-See `brew info ethereum` or `brew info cpp-ethereum` for all options. `--with-...` features are experimental patches.
-
-#### cpp-ethereum options
-Option                 | desc.
------------------------|---------
-`--with-evmjit`        | Build with LLVM and enable EVMJIT
-`--successful`         | Last successful build using --devel only
-`--with-debug`         | Pass -DCMAKE_BUILD_TYPE=Debug
-`--with-vmtrace`       | Build with -DVMTRACE=1
-`--with-paranoia`      | Build with -DPARANOID=1
-
-**Note:** `--with-evmjit` requires LLVM to be installed with `brew install llvm --HEAD --with-clang`
-
-##Troubleshooting
+## Troubleshooting
 
 * Use `--verbose` to get more info while installing.
 * Make sure to update XCode and the command line tools.
@@ -138,7 +131,7 @@ Option                 | desc.
 * Take a walk
 
 
-##Patching
+## Patching
 
 First `cd /Library/Caches/Homebrew/ethereum--git/` and make your changes. Then `git diff > shiny.patch`, copy/paste the content of your patch under `__END__` of `ethereum.rb` and replace the `def patches` block with:
 
